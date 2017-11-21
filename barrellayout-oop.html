@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>barrellayout update</title>
+  <style type="text/css">
+  .ct {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .img-row {
+    margin-bottom: 10px;
+  }
+
+  .img-row .img-box {
+    float: left;
+  }
+
+  .img-row:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  </style>
+</head>
+
+<body>
+  <div class='ct'></div>
+  <script type="text/javascript">
+  function Barrels(ct, num, baseHeight) {
+    this.ct = document.querySelector(ct);
+    this.imgNum = num;
+    this.baseHeight = baseHeight;
+    this.rowImgList = [];
+    this.loadImg();
+  }
+  Barrels.prototype = {
+
+    //  初始化图片信息,并最终返回图片url
+    getUrl: function(num) {
+      var urls = [];
+      for (var i = 0; i < num; i++) {
+        var width = Math.floor(Math.random() * 240 + 100);
+        var height = Math.floor(Math.random() * 300 + 100);
+        var color = Math.random().toString(16).substr(2, 6);
+        urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
+      }
+      return urls;
+    },
+
+    //  加载图片，并将其宽高使用基准设置
+    loadImg: function() {
+      var imgUrls = this.getUrl(this.imgNum);
+      var _this = this;
+      imgUrls.forEach(function(src) {
+        var img = new Image();
+        img.src = src;
+        img.onload = function() {
+          var imgInfo = {
+            target: img,
+            newWidth: img.width * _this.baseHeight / img.height,
+            newHeight: _this.baseHeight,
+            src: img.src
+          };
+          _this.render(imgInfo);
+        };
+
+      });
+    },
+
+    // 创建每一行的图片
+    createRowImg: function(rowImgHeight) {
+      var imgRow = document.createElement('div');
+      imgRow.classList.add('img-row');
+      for (var i = 0; i < this.rowImgList.length; i++) {
+        var imgBox = document.createElement('div');
+        var img = this.rowImgList[i].target;
+        img.height = rowImgHeight;
+        imgBox.classList.add('img-box');
+        imgBox.appendChild(img);
+        imgRow.appendChild(imgBox);
+      }
+      this.ct.appendChild(imgRow);
+    },
+    // 进行渲染，如果数组中的总的图片宽度大于容器宽度，就讲最后一次push进去的图片pop出来，然后将行数组清空，再将pop出来的图片push进去
+    render: function(imgInfo) {
+      var _this = this;
+      var rowSumWidth = 0;
+      var ctWidth = this.ct.offsetWidth;
+      this.rowImgList.push(imgInfo);
+      for (var i = 0; i < this.rowImgList.length; i++) {
+        rowSumWidth = rowSumWidth + this.rowImgList[i].newWidth;
+      }
+
+      if (rowSumWidth > ctWidth) {
+        this.rowImgList.pop();
+        rowSumWidth = rowSumWidth - imgInfo.newWidth;
+        var rowImgHeight = imgInfo.newHeight * ctWidth / rowSumWidth;
+        this.createRowImg(rowImgHeight);
+        this.rowImgList = [];
+        this.rowImgList.push(imgInfo);
+      }
+    },
+
+  };
+  var barrels = new Barrels('.ct', 50, 200);
+  </script>
+</body>
+
+</html>
