@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>delay loading</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  .container {
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .content li {
+    list-style: none;
+    float: left;
+    padding: 5px;
+  }
+
+  .content img {
+    width: 300px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="content">
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=1" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=2" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=3" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img id=a src=""
+            data-src="http://fakeimg.pl/350x200/?text=4" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=5" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=6" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=7" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=8" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=9" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=10" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=11" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=12" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=13" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=14" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img id=b src=""
+            data-src="http://fakeimg.pl/350x200/?text=15" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src=""
+            data-src="http://fakeimg.pl/350x200/?text=16" />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+  <script>
+  function DelayLoding($target, callback) {
+    this.$target = $target;
+    this.callback = callback;
+    this.bind();
+    this.check();
+  }
+
+  DelayLoding.prototype.bind = function() {
+    var _this = this;
+    $(window).on('scroll', function() {
+      _this.check();
+    });
+  };
+
+  DelayLoding.prototype.check = function() {
+    if (this.isShow(this.$target)) {
+      this.callback(this.$target);
+    }
+  };
+  DelayLoding.prototype.isShow = function() {
+    var windowHeight = $(window).height(),
+      scrollTop = $(window).scrollTop(),
+      offsetTop = this.$target.offset().top,
+      nodeHeight = this.$target.height();
+    if (windowHeight + scrollTop > offsetTop && scrollTop < offsetTop + nodeHeight) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  var Lazy = (function() {
+
+    return {
+      init: function($targets, callback) {
+        $targets.each(function(idx, target) {
+          new DelayLoding($(target), callback);
+        });
+
+      },
+      one: function($targets, callback) {
+
+      }
+
+    };
+  })();
+
+  Lazy.init($('.container img'), function($node) {
+    showImg($node);
+  });
+
+  function showImg($img) {
+    var imgUrl = $img.attr('data-src');
+    $img.attr('src', imgUrl);
+  }
+  </script>
+</body>
+
+</html>
