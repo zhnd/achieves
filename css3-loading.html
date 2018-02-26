@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css3 loading</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: rgb(13, 206, 203);
+    }
+
+    .line-loading,
+    .line-loading::before,
+    .line-loading::after {
+      background: #fff;
+      width: 10px;
+      height: 40px;
+      animation: line-load 1s infinite ease-in-out;
+    }
+
+    .line-loading {
+      margin: 100px auto;
+      position: relative;
+      animation-delay: 0.16s;
+    }
+
+    .line-loading::before,
+    .line-loading::after {
+      content: '';
+      position: absolute;
+    }
+
+    .line-loading::before {
+      left: -15px;
+    }
+
+    .line-loading::after {
+      left: 15px;
+      animation-delay: 0.32s;
+    }
+
+    @keyframes line-load {
+      0%,
+      80%,
+      100% {
+        box-shadow: 0 0 #fff;
+        height: 40px;
+      }
+      10% {
+        box-shadow: 0 -20px #fff;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="line-loading"></div>
+  </main>
+</body>
+
+</html>
