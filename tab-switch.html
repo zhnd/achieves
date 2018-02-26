@@ -4,65 +4,65 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>shunshine &amp; kids</title>
+  <title>sunshine &amp; kids</title>
   <link rel="stylesheet" href="">
   <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
-    font-size: 14px;
-    background-color: #fff2e3;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+      font-size: 14px;
+      background-color: #fff2e3;
+    }
 
-  h1,
-  project-list {
-    text-transform: uppercase;
-  }
+    h1,
+    project-list {
+      text-transform: uppercase;
+    }
 
-  ul {
-    padding: 0;
-  }
+    ul {
+      padding: 0;
+    }
 
-  a {
-    text-decoration: none;
-  }
+    a {
+      text-decoration: none;
+    }
 
-  .container {
-    color: #87968e;
-    text-align: center;
-  }
+    .container {
+      color: #87968e;
+      text-align: center;
+    }
 
-  main .project-list li {
-    display: inline-block;
-    cursor: pointer;
-  }
+    main .project-list li {
+      display: inline-block;
+      cursor: pointer;
+    }
 
-  main .project-list .active {
-    font-weight: bold;
-  }
+    main .project-list .active {
+      font-weight: bold;
+    }
 
-  main .preview li {
-    display: none;
-  }
+    main .preview li {
+      display: none;
+    }
 
-  main .preview .active {
-    display: block;
-  }
+    main .preview .active {
+      display: block;
+    }
 
-  .btn {
-    display: inline-block;
-    margin: 3px;
-    padding: 6px 14px;
-    font-weight: normal;
-    border-radius: 2px;
-    background: #72b890;
-    color: #fff;
-  }
+    .btn {
+      display: inline-block;
+      margin: 3px;
+      padding: 6px 14px;
+      font-weight: normal;
+      border-radius: 2px;
+      background: #72b890;
+      color: #fff;
+    }
 
-  footer a {
-    color: #72b890;
-  }
+    footer a {
+      color: #72b890;
+    }
   </style>
 </head>
 
@@ -82,11 +82,21 @@
           <li class="btn">five</li>
         </ul>
         <ul class="preview">
-          <li class="active"><img src="http://ov2hj85gi.bkt.clouddn.com/children-1879907_640.jpg" alt=""></li>
-          <li><img src="http://ov2hj85gi.bkt.clouddn.com/child-817368_640.jpg" alt=""></li>
-          <li><img src="http://ov2hj85gi.bkt.clouddn.com/children-817365_640.jpg" alt=""></li>
-          <li><img src="http://ov2hj85gi.bkt.clouddn.com/girls-739071_640.jpg" alt=""></li>
-          <li><img src="http://ov2hj85gi.bkt.clouddn.com/kid-1365105_640.jpg" alt=""></li>
+          <li class="active">
+            <img src="http://ov2hj85gi.bkt.clouddn.com/children-1879907_640.jpg" alt="">
+          </li>
+          <li>
+            <img src="http://ov2hj85gi.bkt.clouddn.com/child-817368_640.jpg" alt="">
+          </li>
+          <li>
+            <img src="http://ov2hj85gi.bkt.clouddn.com/children-817365_640.jpg" alt="">
+          </li>
+          <li>
+            <img src="http://ov2hj85gi.bkt.clouddn.com/girls-739071_640.jpg" alt="">
+          </li>
+          <li>
+            <img src="http://ov2hj85gi.bkt.clouddn.com/kid-1365105_640.jpg" alt="">
+          </li>
         </ul>
       </div>
       <div class="btn-group">
@@ -94,66 +104,57 @@
       </div>
     </main>
     <footer>
-      <p>make by <a href="https://z2x.coding.me">z2x</a></p>
+      <p>make by
+        <a href="https://z2x.coding.me">z2x</a>
+      </p>
     </footer>
   </div>
   <script>
-  /*
-            var projectTab = document.querySelector('.project-list'),
-              projectTabList = document.querySelectorAll('.project-list>li'),
-              previewContent = document.querySelectorAll('.preview>li');
-
-            projectTab.addEventListener('click', function(e) {
-              if (e.target.tagName.toLowerCase() === 'li') {
-                for (var i = 0; i < projectTabList.length; i++) {
-                  projectTabList[i].classList.remove('active');
-                }
-                e.target.classList.add('active');
-
-                var index = [].indexOf.call(projectTabList,e.target);
-
-                for (i = 0;i < previewContent.length;i++){
-                  previewContent[i].classList.remove('active');
-                }
-                previewContent[index].classList.add('active');
-              }
-            }, false);
-          */
-
-  function Tab(tabNode) {
-    this.init(tabNode);
-    this.bind();
-  }
-
-  Tab.prototype.init = function(tabNode) {
-    this.projectTab = document.querySelector('.project-list');
-    this.projectTabList = document.querySelectorAll('.project-list>li');
-    this.previewContent = document.querySelectorAll('.preview>li');
-  };
-
-  Tab.prototype.bind = function() {
-    var self = this;
-
-    self.projectTab.onclick = function(e) {
-      if (e.target.tagName.toLowerCase() === 'li') {
-        self.projectTabList.forEach(function(node) {
-          node.classList.remove('active');
-        });
-
-        e.target.classList.add('active');
-
-        var index = [].indexOf.call(self.projectTabList, e.target);
-        self.previewContent.forEach(function(node) {
-          node.classList.remove('active');
-        });
-
-        self.previewContent[index].classList.add('active');
-      }
+    /*
+                var projectTab = document.querySelector('.project-list'),
+                  projectTabList = document.querySelectorAll('.project-list>li'),
+                  previewContent = document.querySelectorAll('.preview>li');
+                projectTab.addEventListener('click', function(e) {
+                  if (e.target.tagName.toLowerCase() === 'li') {
+                    for (var i = 0; i < projectTabList.length; i++) {
+                      projectTabList[i].classList.remove('active');
+                    }
+                    e.target.classList.add('active');
+                    var index = [].indexOf.call(projectTabList,e.target);
+                    for (i = 0;i < previewContent.length;i++){
+                      previewContent[i].classList.remove('active');
+                    }
+                    previewContent[index].classList.add('active');
+                  }
+                }, false);
+              */
+    function Tab(tabNode) {
+      this.init(tabNode);
+      this.bind();
+    }
+    Tab.prototype.init = function (tabNode) {
+      this.projectTab = document.querySelector('.project-list');
+      this.projectTabList = document.querySelectorAll('.project-list>li');
+      this.previewContent = document.querySelectorAll('.preview>li');
     };
-  };
-
-  var tabNode = document.querySelectorAll('.tab-content')[0];
-  tab = new Tab(tabNode);
+    Tab.prototype.bind = function () {
+      var self = this;
+      self.projectTab.onclick = function (e) {
+        if (e.target.tagName.toLowerCase() === 'li') {
+          self.projectTabList.forEach(function (node) {
+            node.classList.remove('active');
+          });
+          e.target.classList.add('active');
+          var index = [].indexOf.call(self.projectTabList, e.target);
+          self.previewContent.forEach(function (node) {
+            node.classList.remove('active');
+          });
+          self.previewContent[index].classList.add('active');
+        }
+      };
+    };
+    var tabNode = document.querySelectorAll('.tab-content')[0];
+    tab = new Tab(tabNode);
   </script>
 </body>
 
