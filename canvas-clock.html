@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas clock</title>
+  <style>
+    div {
+      text-align: center;
+      margin-top: 260px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <canvas id="canvas-clock" width="300px" height="300px"></canvas>
+  </div>
+
+  <script>
+    let canvas = document.getElementById('canvas-clock');
+    let ctx = canvas.getContext('2d');
+    let width = ctx.canvas.width;
+    let height = ctx.canvas.height;
+    let r = width / 2;
+    let rem = width / 200
+
+    function drawClock() {
+      ctx.save();
+
+      // 将坐标原点移动至图形中心
+      ctx.translate(r, r);
+
+      // 绘制clock外圆
+      ctx.beginPath();
+      ctx.lineWidth = 10 * rem;
+      ctx.arc(0, 0, r - ctx.lineWidth / 2, 0, Math.PI * 2, false);
+      ctx.stroke();
+
+      // 绘制clock中间的圆点
+      ctx.beginPath();
+      ctx.lineWidth = 2 * rem;
+      ctx.arc(0, 0, 5 * rem, 0, Math.PI * 2, false);
+      ctx.fill();
+
+      // 绘制clock时针数字
+      const hourNumber = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+      ctx.font = 18 * rem + 'px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      hourNumber.forEach(function (number, index) {
+        const radian = 2 * Math.PI / 12 * index;
+
+        let x = Math.cos(radian) * (r - 30 * rem);
+        let y = Math.sin(radian) * (r - 30 * rem);
+        ctx.fillText(number, x, y);
+      })
+
+      // 绘制clock分钟圆点，整数点为深色，其余为浅色
+      for (let i = 0; i < 60; i++) {
+        const radian = 2 * Math.PI / 60 * i;
+        let x = Math.cos(radian) * (r - 18 * rem);
+        let y = Math.sin(radian) * (r - 18 * rem);
+
+        ctx.beginPath();
+        if (i % 5 === 0) {
+          ctx.fillStyle = '#000';
+          ctx.arc(x, y, 2, 0, Math.PI * 2, false);
+        } else {
+          ctx.fillStyle = '#ccc';
+          ctx.arc(x, y, 2, 0, Math.PI * 2, false);
+        }
+        ctx.fill();
+      }
+
+    }
+
+    function drawHourLine(hour, minute) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.lineWidth = 6 * rem;
+      ctx.lineCap = 'round';
+      let hourRadian = 2 * Math.PI / 12 * hour;
+      let minuteRadian = 2 * Math.PI / 12 / 60 * minute;
+      ctx.rotate(hourRadian + minuteRadian);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -r / 4);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMinuteLine(minute) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.lineWidth = 3 * rem;
+      ctx.lineCap = 'round';
+      let radian = 2 * Math.PI / 60 * minute;
+      ctx.rotate(radian);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -r / 2.2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawSecondLine(second) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.lineWidth = 1 * rem;
+      ctx.lineCap = 'round';
+      let radian = 2 * Math.PI / 60 * second;
+      ctx.rotate(radian);
+      ctx.moveTo(0, 30);
+      ctx.lineTo(0, -r / 1.7);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      let hour = new Date().getHours();
+      let minute = new Date().getMinutes();
+      let second = new Date().getSeconds();
+      drawClock();
+      drawHourLine(hour, minute);
+      drawMinuteLine(minute);
+      drawSecondLine(second);
+      ctx.restore();
+    }
+    draw();
+    setInterval(draw, 1000);
+  </script>
+</body>
+
+</html>
