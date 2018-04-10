@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lightning Count</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class LightningCounter extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          strikes: 0,
+        }
+      }
+
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.timerTick(),
+          1000
+        );
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+
+      timerTick() {
+        this.setState({
+          strikes: this.state.strikes + 100
+        });
+      }
+
+      render() {
+        const counterStyle = {
+          color: '#66FFFF',
+          fontSize: 50
+        }
+        const count = this.state.strikes.toLocaleString();
+        return (
+          <h1 style={counterStyle}>{count}</h1>
+        )
+      }
+    }
+
+    class LightningCounterDisplay extends React.Component {
+      render() {
+        const commonStyle = {
+          margin: 0,
+          padding: 0
+        };
+        const divStyle = {
+          width: 240,
+          margin: '0 auto',
+          textAlign: 'center',
+          backgroundColor: 'black',
+          padding: 40,
+          fontFamily: 'sans-serif',
+          color: '#999',
+          borderRadius: 10
+        };
+
+        const textStyle = {
+          emphasis: {
+            fontSize: 38,
+            ...commonStyle
+          },
+          small: {
+            fontSize: 17,
+            opacity: 0.5,
+            ...commonStyle
+          }
+        };
+        return (
+          <div style={divStyle}>
+            <LightningCounter />
+            <h2 style={textStyle.smallEmpasis}>雷霆打击次数</h2>
+            <p style={textStyle.small}>据统计，地球每秒的雷霆打击次数为100次</p>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(
+    <LightningCounterDisplay />, 
+    document.getElementById('root') );
+  </script>
+  <script src="./build/react/react.production.min.js"></script>
+  <script src="./build/react/react-dom.production.min.js"></script>
+  <script src="./build/babel/babel.min.js"></script>
+</body>
+
+</html>
