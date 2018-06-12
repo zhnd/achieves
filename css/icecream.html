@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>icecream</title>
+    <style type="text/css" media="screen">
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #afeeee;
+    }
+
+    .icecream {
+        position: relative;
+        width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .top {
+        position: absolute;
+        width: 300px;
+        border-radius: 50% 50% 0 10%/40% 40% 0 8%;
+    }
+
+    .top-left {
+        background: #ff69b4;
+        height: 450px;
+        border-left: 15px solid #ff38b4;
+        top: 100px;
+        left: 300px;
+        z-index: 3;
+    }
+
+    .top-right {
+        background: #fe99ef;
+        height: 460px;
+        top: 90px;
+        left: 340px;
+        z-index: 2;
+        border-bottom-right-radius: 10% 8%;
+    }
+
+    .in{
+        position: absolute;
+        z-index: 9999;
+        height: 250px;
+        width: 24px;
+        background: #ff38b4;
+        top: 200px;
+        border: 10px solid transparent;
+        border-radius: 50%/10%;
+    }
+    .in-left{
+        left: 400px;
+    }
+    .in-right{
+        left: 480px;
+    }
+
+    .middle {
+        position: absolute;
+        width: 340px;
+        height: 50px;
+        background: white;
+        top: 525px;
+        left: 300px;
+        border-bottom-left-radius: 10% 70%;
+        border-bottom-right-radius: 10% 70%;
+    }
+    .bottom{
+        position: absolute;
+        height: 240px;
+        width: 56px;
+        background: #F4A460;
+        top: 560px;
+        left: 440px;
+        border-top: 40px solid #CD853F;
+        border-bottom: 40px solid #CD853F;
+        border-bottom-right-radius: 50% 12%;
+        border-bottom-left-radius: 50% 12%;
+        margin-bottom: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icecream">
+            <div class="top top-left"></div>
+            <div class="top top-right"></div>
+                <div class="in in-left"></div>
+                <div class="in in-right"></div>
+            <div class="middle"></div>
+            <div class="bottom"></div>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

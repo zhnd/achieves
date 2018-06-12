@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+  <title>input form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    .container .input-group {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .input-group>h2 {
+      padding: 15px 16px;
+      background-color: #009688;
+      color: white;
+    }
+
+    .input-group form {
+      font-family: arial;
+      margin: 16px;
+      color: #757575;
+    }
+
+    .input-group form input,
+    textarea:focus {
+      outline: none;
+    }
+
+    .input-group fieldset {
+      border: none;
+    }
+
+    .input-group input[type="text"],
+    .input-group textarea {
+      display: block;
+      border: none;
+      border-bottom: 1px solid #808080;
+      padding: 8px 0;
+      width: 100%;
+    }
+
+    .input-group .form-check {
+      overflow: hidden;
+    }
+
+    .input-group .form-check #form-check-item {
+      float: left;
+      width: 49%;
+      padding: 0;
+    }
+
+    .input-group input[type="submit"] {
+      padding: 8px 16px;
+      background: #009688;
+      color: white;
+      margin-bottom: 16px;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-group">
+      <h2>信息收集表</h2>
+      <form action="" method="post">
+        <fieldset class="name">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name">
+        </fieldset>
+        <fieldset class="qq">
+          <label for="qq">QQ</label>
+          <input type="text" id="qq" name="qq">
+        </fieldset>
+        <fieldset class="say">
+          <label for="say">要说的话</label>
+          <textarea rows="4" cols="30" id="say"></textarea>
+        </fieldset>
+        <fieldset class="form-check">
+          <fieldset id="form-check-item">
+            <input type="checkbox" id="milk" name="drinks">
+            <label for="milk">Milk</label>
+            <br>
+            <input type="checkbox" id="suger" name="drinks">
+            <label for="suger">Suger</label>
+            <br>
+            <input type="checkbox" id="lemon" name="drinks">
+            <label for="lemon">Lemon</label>
+          </fieldset>
+          <fieldset id="form-check-item">
+            <input type="radio" id="male" name="sex">
+            <label for="male">Male</label>
+            <br>
+            <input type="radio" id="female" name="sex">
+            <label for="female">Female</label>
+          </fieldset>
+        </fieldset>
+        <input type="submit" id="form-submit" value="提交">
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
