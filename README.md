@@ -6,6 +6,8 @@
 
 ## CSS part
 
+* 画一只可爱的皮卡丘：[效果预览](https://z2x.github.io/achieves/css/pikachu.html)
+
 * 使用 canvas 绘制时钟：[效果预览](https://z2x.github.io/achieves/css/canvas-clock.html)
 * 绘制冰激凌：[效果预览](https://z2x.github.io/achieves/css/icecream.html)
 * 绘制三角形：[效果预览](https://z2x.github.io/achieves/css/triangle.html)
