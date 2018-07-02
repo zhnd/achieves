@@ -6,6 +6,8 @@
 
 ## CSS part
 
+* 做一个登录框：[效果预览](https://z2x.github.io/achieves/css/login.html)
+
 * 画一只可爱的皮卡丘：[效果预览](https://z2x.github.io/achieves/css/pikachu.html)
 
 * 使用 canvas 绘制时钟：[效果预览](https://z2x.github.io/achieves/css/canvas-clock.html)

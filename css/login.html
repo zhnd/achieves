@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+  <title>登录框</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  @font-face {
+    font-family: 'iconfont';
+    /* project id 730150 */
+    src: url('//at.alicdn.com/t/font_730150_kdokj7zmale.eot');
+    src: url('//at.alicdn.com/t/font_730150_kdokj7zmale.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_730150_kdokj7zmale.woff') format('woff'),
+    url('//at.alicdn.com/t/font_730150_kdokj7zmale.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_730150_kdokj7zmale.svg#iconfont') format('svg');
+  }
+
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    color: #625E5B;
+    background: url(../images/login-background.png);
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+    font-family: 微软雅黑;
+  }
+
+  header h1 span {
+    font-size: 2rem;
+    font-family: "Brush Script Std";
+  }
+
+  main {
+    margin-top: 35px;
+  }
+
+  form {
+    box-shadow: 0px 1px 2px 1px #aaaaaa, inset 0px 1px 1px rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    background: url(../images/login-input-bg.png);
+  }
+
+  form ul {
+    padding: 2rem 1rem;
+  }
+
+  form ul>li {
+    position: relative;
+    padding: 0.6rem 2rem;
+    list-style: none;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding-left: 2em;
+    height: 2rem;
+    border: none;
+    background: #e1dcd8;
+    color: rgb(98, 94, 91);
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7), inset 0px 2px 5px #aaaaaa;
+    border-radius: 5px;
+  }
+
+  input:focus {
+    background: #f5f2ef;
+  }
+
+  form ul li>span {
+    position: absolute;
+    left: 2.4em;
+    top: 1em;
+
+    color: rgb(98, 94, 91);
+  }
+
+  input[type="checkbox"] {
+    opacity: 0;
+  }
+
+  #checkbox label {
+    position: relative;
+    margin-left: 1rem;
+  }
+
+  #checkbox label::before {
+    position: absolute;
+    display: inline-block;
+
+    left: -2rem;
+    top: -0.5rem;
+  }
+
+  #checkbox label::before {
+    content: "\e63f";
+    display: inline-block;
+    font-family: "iconfont" !important;
+    font-size: 1.5rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #checkbox input[type="checkbox"]+label::before {
+    color: #f5f2ef;
+  }
+
+  #checkbox input[type="checkbox"]:checked+label::before {
+    color: #625E5B;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+
+    padding: 0.5rem;
+
+    color: #ffffff;
+    background: -moz-linear-gradient( top, #94aa64 0%, #7a924a 50%, #607738);
+    background: -webkit-gradient( linear, left top, left bottom, from(#94aa64), color-stop(0.50, #7a924a), to(#607738));
+    border-radius: 5px;
+    border: 1px solid #7d8862;
+    box-shadow: 0px 1px 0px rgba(170, 170, 170, 1), inset 0px 1px 1px rgba(255, 255, 255, 0.7);
+    text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.3), 0px 0px 0px rgba(255, 255, 255, 0);
+  }
+
+  footer {
+    padding-top: 2rem;
+    font-size: 0.7rem;
+    font-family: 黑体;
+    color: rgb(98, 94, 91);
+  }
+
+  footer a {
+    color: rgb(152, 142, 135);
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Login to <span>love.ly</span></h1>
+  </header>
+  <main>
+    <form action="" method="POST">
+      <ul>
+        <li>
+          <span class="iconfont">&#xe6a7;</span>
+          <input type="text" placeholder="Email Address">
+        </li>
+        <li>
+          <span class="iconfont">&#xe90c;</span>
+          <input type="password" placeholder="Password">
+        </li>
+        <li id="checkbox">
+          <input type="checkbox" id="checkbox-remember">
+          <label for="checkbox-remember">Remember Me</label>
+          <li>
+            Forget username or password?
+          </li>
+          <li>
+            <input type="submit" value="Login">
+          </li>
+      </ul>
+    </form>
+  </main>
+  <footer>
+    <p>Love.ly Personal Blog .PSD Template <a href="">Copyright ©2012 Matt Gentile</a></p>
+    <p><a href="">Love.ly Home</a> | <a href="">Bolg
+      </a> | <a href="">Work</a> | <a href="">Terms of Use</a> | <a href="">Contact Me</a></p>
+  </footer>
+</body>
+
+</html>
