@@ -124,7 +124,7 @@
   </div>
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
   <script>
-  carousel = (function() {
+  var carousel = (function() {
     function _Carousel($ct) {
       this.$ct = $ct;
       this.init();
@@ -161,6 +161,7 @@
 
       bind: function() {
         var _this = this;
+        _this.autoPlay();
         this.$nextBtn.click(function(e) {
           e.preventDefault();
           _this.playNext();
@@ -216,6 +217,13 @@
       setBullet: function() {
         this.$bullets.removeClass('active').eq(this.pageIndex).addClass('active');
       },
+
+      autoPlay: function() {
+        var _this = this;
+        setInterval(function() {
+          _this.playNext();
+        }, 3000);
+      }
     };
     return {
       init: function($ct) {
